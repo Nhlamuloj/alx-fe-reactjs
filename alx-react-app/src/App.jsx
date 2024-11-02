@@ -1,6 +1,6 @@
 
 import './App.css'
-import WelcomeMessage from './components/Welcome'
+import WelcomeMessage from './components/WelcomeMessage'
 
 function App() {
  
