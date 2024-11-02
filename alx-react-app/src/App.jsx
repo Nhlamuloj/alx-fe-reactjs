@@ -6,7 +6,10 @@ function App() {
  
 
   return (
-  <WelcomeMessage/>
+    <div>
+      <WelcomeMessage/>
+    </div>
+  
   )
 }
 
