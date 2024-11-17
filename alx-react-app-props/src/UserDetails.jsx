@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import UserContext from './UserContext.js';
+
+import { useUser } from './UserContext';
 
 function UserDetails() {
-  const userData = useContext(UserContext);
+  const userData = useUser();
 
   return (
     <div>
@@ -13,3 +13,4 @@ function UserDetails() {
 }
 
 export default UserDetails;
+
