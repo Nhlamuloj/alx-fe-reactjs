@@ -1,24 +1,13 @@
 
-let recipes = [];
+import create from 'zustand';
 
-export function addRecipe(recipe) {
-    recipes.push(recipe);
-    return recipes;
-}
-
-export function updateRecipe(id, updatedRecipe) {
-    const index = recipes.findIndex(r => r.id === id);
-    if (index !== -1) {
-        recipes[index] = { ...recipes[index], ...updatedRecipe };
-    }
-    return recipes;
-}
-
-export function deleteRecipe(id) {
-    recipes = recipes.filter(r => r.id !== id);
-    return recipes;
-}
-
-export function getRecipes() {
-    return recipes;
-}
+export const useRecipeStore = create((set) => ({
+  recipes: [],
+  addRecipe: (recipe) => set((state) => ({ recipes: [...state.recipes, recipe] })),
+  deleteRecipe: (id) => set((state) => ({ recipes: state.recipes.filter(recipe => recipe.id !== id) })),
+  updateRecipe: (updatedRecipe) => set((state) => ({
+    recipes: state.recipes.map(recipe =>
+      recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+    )
+  }))
+}));
