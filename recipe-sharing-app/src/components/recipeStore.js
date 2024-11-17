@@ -1,21 +1,25 @@
-import create from 'zustand';
-import { updateRecipe, deleteRecipe } from '../recipeStore';
-import updateRecipe from '../recipeStore';
 
+import { useRecipeStore } from './recipeStore';
+import EditRecipeForm from './EditRecipeForm';
+import DeleteRecipeButton from './DeleteRecipeButton';
 
-export const useRecipeStore = create((set) => ({
-  recipes: [],
-  addRecipe: (newRecipe) => set((state) => ({ recipes: [...state.recipes, newRecipe] })),
-  setRecipes: (recipes) => set({ recipes }),
-}));
+const RecipeDetails = ({ recipeId }) => {
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((recipe) => recipe.id === recipeId)
+  );
 
-export const updateRecipe = (id, updatedData) => {
-  console.log(`Updating recipe with ID: ${id}`);
-  // Update logic here
+  if (!recipe) {
+    return <p>Recipe not found</p>;
+  }
+
+  return (
+    <div>
+      <h1>{recipe.title}</h1>
+      <p>{recipe.description}</p>
+      <EditRecipeForm recipe={recipe} />
+      <DeleteRecipeButton recipeId={recipe.id} />
+    </div>
+  );
 };
 
-export const deleteRecipe = (id) => {
-  console.log(`Deleting recipe with ID: ${id}`);
-  // Delete logic here
-};
-
+export default RecipeDetails;
