@@ -1,25 +1,24 @@
 
-import { useRecipeStore } from './recipeStore';
-import EditRecipeForm from './EditRecipeForm';
-import DeleteRecipeButton from './DeleteRecipeButton';
+let recipes = [];
 
-const RecipeDetails = ({ recipeId }) => {
-  const recipe = useRecipeStore((state) =>
-    state.recipes.find((recipe) => recipe.id === recipeId)
-  );
+export function addRecipe(recipe) {
+    recipes.push(recipe);
+    return recipes;
+}
 
-  if (!recipe) {
-    return <p>Recipe not found</p>;
-  }
+export function updateRecipe(id, updatedRecipe) {
+    const index = recipes.findIndex(r => r.id === id);
+    if (index !== -1) {
+        recipes[index] = { ...recipes[index], ...updatedRecipe };
+    }
+    return recipes;
+}
 
-  return (
-    <div>
-      <h1>{recipe.title}</h1>
-      <p>{recipe.description}</p>
-      <EditRecipeForm recipe={recipe} />
-      <DeleteRecipeButton recipeId={recipe.id} />
-    </div>
-  );
-};
+export function deleteRecipe(id) {
+    recipes = recipes.filter(r => r.id !== id);
+    return recipes;
+}
 
-export default RecipeDetails;
+export function getRecipes() {
+    return recipes;
+}
