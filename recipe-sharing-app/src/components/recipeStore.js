@@ -1,6 +1,5 @@
 
 import create from 'zustand';
-import  { createContext, useState, useContext } from 'react';
 
 const useRecipeStore = create(set => ({
   recipes: [], 
@@ -20,24 +19,4 @@ const useRecipeStore = create(set => ({
     return { recommendations: recommended };
   }),
 }));
-
-
-// Create the context
-const RecipeContext = createContext();
-
-// Provider component
-export const RecipeProvider = ({ children }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  return (
-    <RecipeContext.Provider value={{ searchTerm, setSearchTerm }}>
-      {children}
-    </RecipeContext.Provider>
-  );
-};
-
-// Custom hook for consuming the context
-export const useRecipeStores = () => {
-  return useContext(RecipeContext);
-};
 
