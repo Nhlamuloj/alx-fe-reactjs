@@ -1,8 +1,16 @@
 
 import create from 'zustand';
 
+
+const useRecipeStore = create(set => ({
+  recipes: [],
+  addRecipe: (newRecipe) => set(state => ({ recipes: [...state.recipes, newRecipe] })),
+  setRecipes: (recipes) => set({ recipes })
+}));
+
 const useRecipeStore = create(set => ({
   recipes: [], 
+  
   favorites: [], 
   addFavorite: (recipeId) => set(state => ({ 
     favorites: [...state.favorites, recipeId] 
