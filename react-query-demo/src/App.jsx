@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import PostsComponent from './PostComponent';
+import PostsComponent from './components/PostComponent';
 
 const queryClient = new QueryClient();
 
