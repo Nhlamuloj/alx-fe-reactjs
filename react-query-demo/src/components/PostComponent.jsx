@@ -1,5 +1,6 @@
+
 import { useQuery } from 'react-query';
-import axios from 'axios'
+import axios from 'axios';
 
 const fetchPosts = async () => {
   const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts');
@@ -7,8 +8,8 @@ const fetchPosts = async () => {
 };
 
 function PostsComponent() {
-  const { data, isLoading, error, refetch } = useQuery('posts', fetchPosts, {
-    staleTime: 5000, // Cache data for 5 seconds
+  const { data, isLoading, error, refetch, isFetching } = useQuery('posts', fetchPosts, {
+    staleTime: 5000,
   });
 
   if (isLoading) return <p>Loading posts...</p>;
@@ -16,7 +17,9 @@ function PostsComponent() {
 
   return (
     <div>
-      <button onClick={() => refetch()}>Refetch Posts</button>
+      <button onClick={() => refetch()} disabled={isFetching}>
+        {isFetching ? 'Refetching...' : 'Refetch Posts'}
+      </button>
       <ul>
         {data.map((post) => (
           <li key={post.id}>
