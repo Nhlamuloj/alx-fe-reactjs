@@ -1,6 +1,6 @@
 
 import { Routes, Route, Link, } from "react-router-dom";
-import ProfileSettings from "../pages/Profile"
+import ProfileSettings from "./Profile"
 import ProfileDetails from "../ProfileDetails";
 
 const Profile = () => (
