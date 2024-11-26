@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start": "react-scripts start",
     "test": "jest",
     "eject": "react-scripts eject"
   },
