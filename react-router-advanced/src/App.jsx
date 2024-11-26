@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./components/Profile";
+import BlogPost from "./components/BlogPost"
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
    
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/blog/:id" element={<BlogPost />} />
       <Route path="/about" element={<About />} />
       <Route path="/profile/*" element={<Profile />} />
     </Routes>
