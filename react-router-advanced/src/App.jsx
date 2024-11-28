@@ -1,26 +1,30 @@
 
-import { Routes, Route, Link } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
 import Profile from "./components/Profile";
-import BlogPost from "./components/BlogPost"
+import Login from "./components/Login";
+import NotFound from "./components/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-const App = () => (
-  <div>
-    <nav>
-      <Link to="/">Home</Link> | <Link to="/about">About</Link> | <Link to="/profile">Profile</Link>
-    </nav>
-    <BrowserRouter>
-   
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/blog/:id" element={<BlogPost />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/profile/*" element={<Profile />} />
-    </Routes>
-    </BrowserRouter>
-  </div>
-);
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        {/* Protected Route */}
+        <Route
+          path="/profile/*"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+};
 
 export default App;
