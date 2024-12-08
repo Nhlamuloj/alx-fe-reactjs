@@ -35,7 +35,7 @@ const RecipeDetail = () => {
         <h2 className="text-2xl font-semibold mb-2">Ingredients</h2>
         <ul className="list-disc list-inside">
           {recipe.ingredients?.map((ingredient, index) => (
-            <li key={index} className="text-gray-700">
+            <li key={index} className="text-gray-700 shadow ">
               {ingredient}
             </li>
           ))}
@@ -45,7 +45,7 @@ const RecipeDetail = () => {
         <h2 className="text-2xl font-semibold mb-2">Cooking Instructions</h2>
         <ol className="list-decimal list-inside">
           {recipe.instructions?.map((step, index) => (
-            <li key={index} className="text-gray-700">
+            <li key={index} className="text-gray-700 shadow">
               {step}
             </li>
           ))}
