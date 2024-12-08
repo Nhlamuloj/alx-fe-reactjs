@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
->>>>>>> 7ce9212ec38d0acf9491710003713c8dbcb16b2c
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
