@@ -1,29 +1,36 @@
 import React, { useState } from "react";
-import fetchUserData from '../services/githubService'
 
+const Search = ({ onSearch }) => {
+  const [username, setUsername] = useState("");
 
-const Search = () => {
-    const [query, setQuery] = useState('');
-    const [userFound, setUserFound] = useState(true);
+  // Update state when the input value changes
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  };
 
-    const handleSearch = () => {
-        // Example logic to determine if user is found
-        const found = query === 'exampleUser'; // Replace with real search logic
-        setUserFound(found);
-    };
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    if (username.trim()) {
+      onSearch(username.trim()); // Pass the username to the parent component or handler
+      setUsername(""); // Optionally clear the input field
+    }
+  };
 
-    return (
-        <div>
-            <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search for a user"
-            />
-            <button onClick={handleSearch}>Search</button>
-            {!userFound && <p>Looks like we can't find the user</p>}
-        </div>
-    );
+  return (
+    <form onSubmit={handleSubmit} style={{ display: "flex", gap: "10px", margin: "20px 0" }}>
+      <input
+        type="text"
+        placeholder="Enter GitHub username"
+        value={username}
+        onChange={handleChange}
+        style={{ padding: "8px", flex: 1 }}
+      />
+      <button type="submit" style={{ padding: "8px 16px", cursor: "pointer" }}>
+        Search
+      </button>
+    </form>
+  );
 };
 
 export default Search;
