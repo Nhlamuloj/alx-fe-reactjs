@@ -1,63 +1,29 @@
 import React, { useState } from "react";
 import fetchUserData from '../services/githubService'
 
+
 const Search = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [userData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [query, setQuery] = useState('');
+    const [userFound, setUserFound] = useState(true);
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
+    const handleSearch = () => {
+        // Example logic to determine if user is found
+        const found = query === 'exampleUser'; // Replace with real search logic
+        setUserFound(found);
     };
-
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        setLoading(true);
-        setError(false);
-        setUserData(null);
-
-        try {
-            const data = await fetchUserData(searchTerm);
-            setUserData(data);
-        } catch (err) {
-            setError(true);
-        } finally {
-            setLoading(false);
-        }
-    };
-
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
-            <form onSubmit={handleFormSubmit}>
+        <div>
             <input
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search for a user"
             />
-              <button onClick={handleSearch}>Search</button>
-              {!userFound && <p>Looks like we can't find the user</p>}
-             
-            </form>
-            
-                <div style={{ marginTop: "20px" }}>
-                    <img
-                        src={userData.avatar_url}
-                        alt={userData.login}
-                        style={{ width: "150px", borderRadius: "50%" }}
-                    />
-                    <h2>{userData.name || userData.login}</h2>
-                    <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-                        View GitHub Profile
-                    </a>
-
-                    
-                </div>
-
+            <button onClick={handleSearch}>Search</button>
+            {!userFound && <p>Looks like we can't find the user</p>}
         </div>
     );
 };
 
-export default Search
+export default Search;
