@@ -4,28 +4,12 @@ import fetchUserData from '../services/githubService'
 
 const Search = () => {
     const [query, setQuery] = useState('');
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const [userFound, setUserFound] = useState(true);
 
-    const handleSearch = async () => {
-        setLoading(true);
-        setError(false);
-        setUser(null);
-
-        try {
-            // Replace with your API endpoint
-            const response = await fetch(`https://api.github.com/users/${query}`);
-            if (!response.ok) {
-                throw new Error('User not found');
-            }
-            const data = await response.json();
-            setUser(data);
-        } catch (err) {
-            setError(true);
-        } finally {
-            setLoading(false);
-        }
+    const handleSearch = () => {
+        // Example logic to determine if user is found
+        const found = query === 'exampleUser'; // Replace with real search logic
+        setUserFound(found);
     };
 
     return (
@@ -37,16 +21,7 @@ const Search = () => {
                 placeholder="Search for a user"
             />
             <button onClick={handleSearch}>Search</button>
-            
-            {loading && <p>Loading...</p>}
-            {error && <p>Looks like we can't find the user</p>}
-            
-            {user && (
-                <div>
-                    <img src={user.avatar_url} alt={`${user.login}'s avatar`} />
-                    <p>Username: {user.login}</p>
-                </div>
-            )}
+            {!userFound && <p>Looks like we can't find the user</p>}
         </div>
     );
 };
