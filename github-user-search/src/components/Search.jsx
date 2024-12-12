@@ -31,18 +31,17 @@ const Search = () => {
     return (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
             <form onSubmit={handleFormSubmit}>
-                <input
-                    type="text"
-                    placeholder="Enter GitHub username"
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                />
-                <button type="submit">Search</button>
+            <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search for a user"
+            />
+              <button onClick={handleSearch}>Search</button>
+              {!userFound && <p>Looks like we can't find the user</p>}
+             
             </form>
-
-            {loading && <p>Loading...</p>}
-            {error && <p>Looks like we can’t find the user.</p>}
-            {userData && (
+            
                 <div style={{ marginTop: "20px" }}>
                     <img
                         src={userData.avatar_url}
@@ -54,18 +53,9 @@ const Search = () => {
                         View GitHub Profile
                     </a>
 
-                    <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search for a user"
-            />
-            <button onClick={handleSearch}>Search</button>
-            {!userFound && <p>Looks like we can't find the user</p>}
+                    
                 </div>
 
-                
-            )}
         </div>
     );
 };
