@@ -54,7 +54,17 @@ const Search = () => {
                         View GitHub Profile
                     </a>
 
-                    </div>
+                    <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search for a user"
+            />
+            <button onClick={handleSearch}>Search</button>
+            {!userFound && <p>Looks like we can't find the user</p>}
+                </div>
+
+                
             )}
         </div>
     );
