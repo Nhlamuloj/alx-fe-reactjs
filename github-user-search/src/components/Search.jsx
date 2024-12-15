@@ -23,7 +23,15 @@ const Search = ({ onSearch }) => {
         />
         <button type="submit">Search</button>
       </form>
+
+
+      <div className="user-info">
+          <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} />
+          <h2>{userData.login}</h2>
+        </div>
     </div>
+
+    
   );
 };
 
