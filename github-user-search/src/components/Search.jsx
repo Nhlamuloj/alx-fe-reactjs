@@ -1,12 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
     const [username, setUsername] = useState('');
+    const [users, setUsers] = useState([]);
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+          setLoading(true);
+          try {
+            // Set the query parameters, including location and minRepos
+            const queryParams = {
+              location: 'San Francisco',  // Filter by location
+              minRepos: 10,               // Filter by minimum number of repositories
+              followers: 100,             // Filter by minimum number of followers
+            };
+            
+            // Call the searchUsers function
+            const data = await githubService.searchUsers(queryParams);
+            
+            // Set the users data from the response (items array)
+            setUsers(data.items);
+          } catch (err) {
+            setError(err.message);
+          } finally {
+            setLoading(false);
+          }
+        };
+    
+        fetchUsers();
+      }, []);
+    
+      // Handle loading and error states
+      if (loading) {
+        return <div>Loading...</div>;
+      }
+    
+      if (error) {
+        return <div>Error: {error}</div>;
+      }
+    
 
     const handleSearch = async (event) => {
         event.preventDefault(); // Prevent page reload
