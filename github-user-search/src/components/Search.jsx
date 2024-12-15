@@ -6,6 +6,7 @@ const Search = () => {
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [users, setUsers] = useState([]);
 
     const handleSearch = async (event) => {
         event.preventDefault(); // Prevent page reload
@@ -76,6 +77,23 @@ const Search = () => {
         placeholder="Enter minimum number of repositories"
         class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+    </div>
+
+
+    <div>
+      <h2>GitHub Users</h2>
+      <ul>
+        {users.length > 0 ? (
+          users.map((user) => (
+            <li key={user.id}>
+              <img src={user.avatar_url} alt={user.login} width="50" />
+              <p>{user.login}</p>
+            </li>
+          ))
+        ) : (
+          <p>No users found.</p>
+        )}
+      </ul>
     </div>
 
     <div>
