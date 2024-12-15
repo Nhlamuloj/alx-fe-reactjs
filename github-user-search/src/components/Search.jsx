@@ -37,17 +37,57 @@ const Search = () => {
                 <button type="submit">Search</button>
             </form>
 
-            <div>
-                <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
-                 <input 
-                   type="text" 
-                   id="search" 
-                   name="search" 
-                   class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                   placeholder="Search repositories, users, or topics" 
-                   aria-label="Search repositories"
-                 />
-            </div>
+            <div class="max-w-4xl mx-auto p-4">
+  <form class="bg-white p-6 rounded-lg shadow-md space-y-4">
+    <h2 class="text-xl font-semibold text-gray-700">Advanced Search</h2>
+    
+    
+    <div class="flex flex-col">
+      <label for="search" class="text-sm font-medium text-gray-600">Search Term</label>
+      <input 
+        type="text" 
+        id="search" 
+        name="search" 
+        placeholder="Enter search term"
+        class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+
+    <div class="flex flex-col">
+      <label for="location" class="text-sm font-medium text-gray-600">Location</label>
+      <input 
+        type="text" 
+        id="location" 
+        name="location" 
+        placeholder="Enter location"
+        class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    
+    <div class="flex flex-col">
+      <label for="min-repos" class="text-sm font-medium text-gray-600">Minimum Repositories</label>
+      <input 
+        type="number" 
+        id="min-repos" 
+        name="min-repos" 
+        min="0"
+        placeholder="Enter minimum number of repositories"
+        class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+    <div>
+      <button 
+        type="submit" 
+        class="w-full py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        Search
+      </button>
+    </div>
+  </form>
+</div>
+
 
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
