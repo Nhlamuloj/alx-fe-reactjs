@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchUserData } from './services/githubService';
+import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
     const [username, setUsername] = useState('');
@@ -37,6 +37,18 @@ const Search = () => {
                 <button type="submit">Search</button>
             </form>
 
+            <div>
+                <label for="search" class="block text-sm font-medium text-gray-700">Search</label>
+                 <input 
+                   type="text" 
+                   id="search" 
+                   name="search" 
+                   class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                   placeholder="Search repositories, users, or topics" 
+                   aria-label="Search repositories"
+                 />
+            </div>
+
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {userData && (
@@ -53,6 +65,8 @@ const Search = () => {
                     </a>
                 </div>
             )}
+
+            
         </div>
     );
 };
