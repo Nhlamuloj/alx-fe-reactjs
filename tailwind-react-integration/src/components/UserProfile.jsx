@@ -1,6 +1,6 @@
 const UserProfile = () => {
   return (
-    <div className="bg-white p-6 rounded-lg  shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out  max-w-xs md:max-w-sm  text-lg  md:text-xl text-sm">
+    <div className="bg-white p-6 rounded-lg  shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out  max-w-xs md:max-w-sm  text-lg  md:text-xl text-sm sm:w-24 sm:h-24  md:w-36 md:h-36">
       <div className="flex items-center space-x-4">
        <img
          src="profile-image.jpg"
