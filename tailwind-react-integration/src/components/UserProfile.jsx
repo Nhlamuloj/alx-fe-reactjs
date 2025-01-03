@@ -13,7 +13,7 @@ const UserProfile = () => {
           <p className="text-gray-600 bg-gray-100 p-8 max-w-sm mx-auto my-20 text-xl text-blue-800 my-4">Software Developer</p>
         </div>
       </div>
-      <p className="mt-4 text-gray-500 bg-gray-100 p-8 max-w-sm mx-auto my-20 md:p-8 sm:p-4" >Lorem  nhlamulo ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p className="mt-4 text-gray-500 bg-gray-100 p-8 max-w-sm mx-auto my-20 md:p-8 sm:p-4 text-base" >Lorem  nhlamulo ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   );
 };
