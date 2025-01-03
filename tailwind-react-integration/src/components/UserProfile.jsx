@@ -5,7 +5,7 @@ const UserProfile = () => {
        <img
          src="profile-image.jpg"
           alt="Profile Image"
-         class="w-32 h-32 rounded-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
+         class=" w-36 h-36 rounded-full object-cover transition-transform duration-300 ease-in-out hover:scale-110"
         />
 
         <div>
