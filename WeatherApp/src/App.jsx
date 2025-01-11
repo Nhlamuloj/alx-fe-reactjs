@@ -10,19 +10,19 @@ const App = () => {
     JSON.parse(localStorage.getItem("recentSearches")) || []
   );
 
-  const apiKey = "3aceafa05759260ad4e24517ba7f3e15";  // Replace with your OpenWeatherMap API key
+  const apiKey = "3aceafa05759260ad4e24517ba7f3e15";  //  API key
 
   const fetchWeather = async (city) => {
     setLoading(true);
     setError("");
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`  //  OpenWeatherMap API key
       );
       setWeatherData(response.data);
       setLoading(false);
 
-      // Save to recent searches in local storage
+      // Save to  searches in local storage
       if (!recentSearches.includes(city)) {
         const updatedSearches = [...recentSearches, city];
         setRecentSearches(updatedSearches);
@@ -48,9 +48,9 @@ const App = () => {
 
   return (
     <div className="w-full h-full relative">
-      <div className="max-w-lg w-full bg-white rounded-lg shadow-xl p-6 space-y-4">
-        <h1 className="text-2xl font-semibold text-center text-gray-700">
-          Weather Dashboard
+      <div className="max-w-lg w-full bg-midnight rounded-lg shadow-xl p-6 space-y-4">
+        <h1 className="text-2xl font-semibold text-center text--700">
+           NJ WeatherApp
         </h1>
         
         {/* Search Bar */}
@@ -64,7 +64,7 @@ const App = () => {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-6 py-3 rounded-lg"
+            className="bg-blue-500 text-blue px-6 py-3 rounded-lg"
           >
             Search
           </button>
