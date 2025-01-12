@@ -61,11 +61,11 @@ const App = () => {
             placeholder="Enter city name"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
             type="submit"
-            className="bg-blue-500 text-blue px-6 py-3 rounded-lg"
+            className="bg-blue-500 px-3.5 text-white duration-150 hover:bg-blue-600"
           >
             Search
           </button>
