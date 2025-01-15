@@ -1,6 +1,7 @@
 import React, { useState,  } from "react";
 import axios from "axios";
-import "./App.css"
+import './App.css'
+
 
 const App = () => {
   const [city, setCity] = useState("");
@@ -49,7 +50,7 @@ const App = () => {
 
   return (
     <div className="w-full h-full relative">
-      <div className="max-w-lg w-full  bg-green-500 rounded-lg shadow-xl p-6 space-y-4">
+      <div className="max-w-lg w-full  bg-blue-500 rounded-lg shadow-xl p-6 space-y-4">
         <h1 className="text-2xl font-semibold text-center text--700">
            NJ WeatherApp
         </h1>
@@ -118,3 +119,4 @@ const App = () => {
 };
 
 export default App;
+
