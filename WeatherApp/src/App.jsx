@@ -62,11 +62,11 @@ const App = () => {
             placeholder="Enter city name"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="w-full p-3 rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full p-3 rounded-lg border border-text-yellow-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <button
             type="submit"
-            className="bg-blue-500 px-3.5 text-white duration-150 hover:bg-blue-600"
+            className="text-white-600 px-3.5 text-white duration-150 hover:bg-blue-600"
           >
             Search
           </button>
@@ -75,13 +75,13 @@ const App = () => {
         {/* Recent Searches */}
         {recentSearches.length > 0 && (
           <div className="mt-4">
-            <h2 className="text-lg font-semibold text-gray-700">Recent Searches</h2>
+            <h2 className="text-lg font-semibold text-white-700">Recent Searches</h2>
             <ul className="space-y-2">
               {recentSearches.map((recentCity, index) => (
                 <li
                   key={index}
                   onClick={() => handleSelectRecentSearch(recentCity)}
-                  className="text-blue-500 cursor-pointer"
+                  className="text-black-500 cursor-pointer"
                 >
                   {recentCity}
                 </li>
@@ -91,26 +91,26 @@ const App = () => {
         )}
 
         {/* Weather Data */}
-        {loading && <p className="text-center text-gray-700">Loading...</p>}
+        {loading && <p className="text-centertext-yellow-600">Loading...</p>}
 
-        {error && !loading && <p className="text-center text-red-500">{error}</p>}
+        {error && !loading && <p className="text-center text-red-700">{error}</p>}
 
         {weatherData && !loading && !error && (
           <div className="text-center">
-            <h2 className="text-2xl font-semibold text-gray-700">
+            <h2 className="text-2xl font-semibold text-yellow-600">
               {weatherData.name}, {weatherData.sys.country}
             </h2>
-            <p className="text-xl text-gray-600">{weatherData.weather[0].main}</p>
+            <p className="text-xl text-yellow-600">{weatherData.weather[0].main}</p>
             <img
               src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
               alt={weatherData.weather[0].description}
               className="mx-auto"
             />
-            <p className="text-4xl font-semibold text-gray-700">
+            <p className="text-4xl font-semibold text-yellow-600">
               {weatherData.main.temp}°C
             </p>
-            <p className="text-lg text-gray-500">Humidity: {weatherData.main.humidity}%</p>
-            <p className="text-lg text-gray-500">Wind Speed: {weatherData.wind.speed} km/h</p>
+            <p className="text-lg text-yellow-600">Humidity: {weatherData.main.humidity}%</p>
+            <p className="text-lg text-yellow-600">Wind Speed: {weatherData.wind.speed} km/h</p>
           </div>
         )}
       </div>
